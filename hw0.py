@@ -4,6 +4,7 @@
 #     "numpy==2.4.1",
 #     "pytest==9.0.2",
 #     "requests==2.32.5",
+#     "mugrade @ git+https://github.com/locuslab/mugrade.git",
 # ]
 # ///
 
@@ -122,7 +123,6 @@ def add(x, y):
     """
     ### BEGIN YOUR CODE
     pass
-    ### END YOUR CODE
 
 
 @app.cell(hide_code=True)
@@ -243,15 +243,26 @@ def primes(n):
     Output:
         list of primes up to (not including) n
     """
-    ### BEGIN YOUR CODE
-    ### END YOUR CODE
 
 
-@app.function
+@app.function(hide_code=True)
 def test_primes():
     p = primes(10)
     assert isinstance(p, list)
     assert p == [2, 3, 5, 7]
+
+
+@app.cell(hide_code=True)
+def _():
+    submit_primes_button = mo.ui.run_button(label="submit `primes`")
+    submit_primes_button
+    return (submit_primes_button,)
+
+
+@app.cell
+def _(submit_primes_button):
+    mugrade.submit_tests(primes) if submit_primes_button.value else None
+    return
 
 
 @app.cell(hide_code=True)
@@ -366,14 +377,31 @@ def poly_add(p1, p2):
     Output:
         Polynomial corresponding to the addition of p1 and p2
     """
-    ### BEGIN YOUR CODE
-    ### END YOUR CODE
 
 
-@app.function
-@pytest.mark.parametrize
-def test_poly_add(p1, p2, p3):
-    ...
+@app.function(hide_code=True)
+def test_poly_add():
+    p1 = Polynomial([1, 5, 0, 5])
+    p2 = Polynomial([0, 2])
+    p3 = Polynomial([-1, 6, 7, -5])
+    p4 = Polynomial([0.3, 0.4, 1.6, 1.9])
+    assert poly_add(p1, p2) == Polynomial([1, 7, 0, 5])
+    assert poly_add(p1, p3) == Polynomial([0, 11, 7])
+    assert poly_add(p1, Polynomial([0])) == p1
+    assert poly_add(p2, p4) == Polynomial([0.3, 2.4, 1.6, 1.9])
+
+
+@app.cell(hide_code=True)
+def _():
+    submit_poly_add_button = mo.ui.run_button(label="submit `poly_add`")
+    submit_poly_add_button
+    return (submit_poly_add_button,)
+
+
+@app.cell
+def _(submit_poly_add_button):
+    mugrade.submit_tests(poly_add) if submit_poly_add_button.value else None
+    return
 
 
 @app.cell(hide_code=True)
@@ -415,12 +443,30 @@ def poly_mul(p1, p2):
     """
     ### BEGIN YOUR CODE
     pass
-    ### END YOUR CODE
+
+
+@app.function(hide_code=True)
+def test_poly_mul():
+    p1 = Polynomial([1, 5, 0, 5])
+    p2 = Polynomial([0, 2])
+    p3 = Polynomial([-1, 6, 7, -5])
+    p4 = Polynomial([0.3, 0.4, 1.6, 1.9])
+    assert poly_mul(p1, p2) == Polynomial([0, 2, 10, 0, 10])
+    assert poly_mul(p1, p3) == Polynomial([-1, 1, 37, 25, 5, 35, -25])
+    assert poly_mul(p1, Polynomial([1])) == p1
+    assert poly_mul(p1, p4) == Polynomial([0.3, 1.9, 3.6, 11.4, 11.5, 8.0, 9.5])
+
+
+@app.cell(hide_code=True)
+def _():
+    submit_poly_mul_button = mo.ui.run_button(label="submit `poly_mul`")
+    submit_poly_mul_button
+    return (submit_poly_mul_button,)
 
 
 @app.cell
-def _():
-    # ... migrate test_poly_mul here ...
+def _(submit_poly_mul_button):
+    mugrade.submit_tests(poly_mul) if submit_poly_mul_button.value else None
     return
 
 
@@ -461,12 +507,27 @@ def poly_derivative(p):
     """
     ### BEGIN YOUR CODE
     pass
-    ### END YOUR CODE
+
+
+@app.function(hide_code=True)
+def test_poly_derivative():
+    p1 = Polynomial([1, 5, 0, 5])
+    p2 = Polynomial([0.3, 0.4, 1.6])
+    assert poly_derivative(p1) == Polynomial([5, 0, 15])
+    assert poly_derivative(p2) == Polynomial([0.4, 3.2])
+    assert poly_derivative(Polynomial([0])) == Polynomial([0])
+
+
+@app.cell(hide_code=True)
+def _():
+    submit_poly_derivative_button = mo.ui.run_button(label="submit `poly_derivative`")
+    submit_poly_derivative_button
+    return (submit_poly_derivative_button,)
 
 
 @app.cell
-def _():
-    # ... migrate test_poly_derivate here ...
+def _(submit_poly_derivative_button):
+    mugrade.submit_tests(poly_derivative) if submit_poly_derivative_button.value else None
     return
 
 
