@@ -129,7 +129,7 @@ def add(x, y):
 @app.cell(hide_code=True)
 def _():
     mo.md(r"""
-    The next cell runs _unit tests_ for the _add_ function, checking the correctness
+    The next cell runs _unit tests_ for the `add` function, checking the correctness
     of the function you just implemented. You can take a look at these unit tests by
     expanding the code of the next cell.
 
@@ -154,9 +154,9 @@ def _():
     def test_add(x, y, z):
         assert add(x, y) == z
 
-
     def test_add_type():
         assert isinstance(add(4, 2.1), float)
+
     return
 
 
@@ -184,10 +184,20 @@ def _(submit_add_button):
 @app.cell(hide_code=True)
 def _():
     mo.md(r"""
-    If all goes correctly, you should see feedback that the grader tests passed.  And when you view the mugrade site (you may need to refresh), you should see the assignment as being submitted correctly.  If anything goes wrong, you should see an error code that indicates if there is any obvious problem (for instance, if you didn't set the MUGRADE_KEY value above).  However, in general when you fail a submission we _don't_ provide very much feedback, because the goal is for you to use the local tests to debug your assignment, and the submission just to submit the final version.
+    If all goes correctly, you should see feedback that the grader tests
+    passed.  And when you view the mugrade site (you may need to refresh), you
+    should see the assignment as being submitted correctly.  If anything goes
+    wrong, you should see an error code that indicates if there is any obvious
+    problem (for instance, if you didn't set the `MUGRADE_KEY` value above).
+    However, in general when you fail a submission we _don't_ provide very much
+    feedback, because the goal is for you to use the local tests to debug your
+    assignment, and the submission just to submit the final version.
 
-    **For the CMU course only (not needed for online course):** After you have submitted _all_ the assignments for the course, you should additionally upload the notebook itself: download the notebook from molab, and upload it to mugrade using the "Upload Code" link at the bottom of the page assignment page.
-    """)
+    **For the CMU course only (not needed for online course):** After you have
+    submitted _all_ the assignments for the course, you should additionally
+    upload the notebook itself: download the notebook from molab, and upload it
+    to mugrade using the "Upload Code" link at the bottom of the page
+    assignment page.""")
     return
 
 
@@ -415,8 +425,10 @@ def _():
     Next implement a function that multiplies together two polynomials.  Multiplying polynomials involves multipling every term in the first polynomial with every term in the second, and adding together the results.  For example, for the polynomials
     $$p_1(x) = 3x^3 + 2x + 3, \quad p_2(x) = 2x^2 + 5$$
     their multiplication is given by
+
     $$\begin{split} p_1(x) \cdot p_2(x) & = (3x^3 + 2x + 3) \cdot 2x^2 + (3x^3 + 2x + 3) \cdot 5 \\
     & = (6x^5 + 4x^3 + 6x^2) + (15x^3 + 10x + 15) \\ & = 6x^5 + 19x^3 + 6x^2 + 10x + 15\end{split}.$$
+
     Implement this logic in the function below.
     """)
     return
@@ -528,7 +540,9 @@ def _():
 
 @app.cell
 def _(submit_poly_derivative_button):
-    mugrade.submit_tests(poly_derivative) if submit_poly_derivative_button.value else None
+    mugrade.submit_tests(
+        poly_derivative
+    ) if submit_poly_derivative_button.value else None
     return
 
 
