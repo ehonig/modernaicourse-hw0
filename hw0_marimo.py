@@ -371,7 +371,7 @@ def _():
 
     then
 
-    $$p_1(x) + p_2(x) = 3x^3 + 4x^2 + 5x + 8.$$
+    $$p_1(x) + p_2(x) = 3x^3 + 5x^2 + 5x + 8.$$
 
     Implement this logic in the function below.  Note that the "only" thing that's required to implement this is to construct a new set off polynomial coefficients corresponding to the addition, and return a new polynomial constructed from these coefficients.
     """)
