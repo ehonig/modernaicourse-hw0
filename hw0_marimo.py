@@ -1,4 +1,5 @@
 # /// script
+# requires-python = ">=3.12"
 # dependencies = [
 #     "marimo",
 #     "numpy==2.4.1",
@@ -10,7 +11,7 @@
 
 import marimo
 
-__generated_with = "0.19.2"
+__generated_with = "0.19.11"
 app = marimo.App()
 
 with app.setup(hide_code=True):
@@ -197,7 +198,8 @@ def _():
     submitted _all_ the assignments for the course, you should additionally
     upload the notebook itself: download the notebook from molab, and upload it
     to mugrade using the "Upload Code" link at the bottom of the page
-    assignment page.""")
+    assignment page.
+    """)
     return
 
 
@@ -436,8 +438,11 @@ def _():
 
     their multiplication is given by
 
-    $$\begin{split} p_1(x) \cdot p_2(x) & = (3x^3 + 2x + 3) \cdot 2x^2 + (3x^3 + 2x + 3) \cdot 5 \\
-    & = (6x^5 + 4x^3 + 6x^2) + (15x^3 + 10x + 15) \\ & = 6x^5 + 19x^3 + 6x^2 + 10x + 15\end{split}.$$
+    $$
+    \begin{split}
+    p_1(x) \cdot p_2(x) & = (3x^3 + 2x + 3) \cdot 2x^2 + (3x^3 + 2x + 3) \cdot 5 \\
+    & = (6x^5 + 4x^3 + 6x^2) + (15x^3 + 10x + 15) \\ & = 6x^5 + 19x^3 + 6x^2 + 10x + 15.\end{split}
+    $$
 
     Implement this logic in the function below.
     """)
@@ -453,7 +458,7 @@ def poly_mul(p1, p2):
     p2 = 2x^2 + 5
 
     Then:
-    p1 + p2 = 6x^5 + 19x^3 + 6x^2 + 10x + 15
+    p1 * p2 = 6x^5 + 19x^3 + 6x^2 + 10x + 15
 
     Input:
         p1 : Polynomial
